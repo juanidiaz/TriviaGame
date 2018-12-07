@@ -1,0 +1,19 @@
+body {
+    /* 
+    background-image: url("../images/curtains_1.png");
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: rgb(211, 211, 211);
+    text-shadow: 2px 2px 10px #111111;
+    */
+    background-color: rgb(36, 36, 36);
+    color: rgb(211, 211, 211);
+}
+
+div{
+    /* 
+    text-align: center;
+    font-size: 90px;
+    */
+}
