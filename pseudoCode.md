@@ -3,6 +3,7 @@
 #------------------------------------------------#
 
 # Objects
+triviaElement       = Contain the question and the answerArray for that question
 intervalId          = Holds setInterval that runs the stopwatch
 
 
@@ -12,7 +13,6 @@ answerArray         = All answers, each item has three values, item 0 is the cor
 
 
 # Integers
-questionIndex       = randomly generated index, sets the question/answer to use
 questionSet         = number of questions to pick
 wins                = Correct answers
 loss                = Incorrect answers
@@ -61,14 +61,10 @@ clockRunning        = Time runing
 # Select new questions
 - Check if `questionCount` is greater than `questionSet`
     + TRUE - Go to final screen
-    + FALSE - Continua
-- Create a random number [questionIndex] from `0` to [questionArray].`lenght - 1`
-- Compare if this number has been used before.
-    + If new number then use
-    + If old number then pick again
-- Pick a total of question from the `questionArray` using the `questionIndex`.
-- Get the answer text from [answerArray] using the `questionIndex`.
-- Randomly get the three values for `answerArray[questionIndex]` on three buttons
+    + FALSE - Continue
+- Pick the question from the `questionArray[questionCount].question`.
+- Get the answer text from `questionArray[questionCount].answerArray[]`.
+- Randomly get the three values for each answer and display onto three buttons
 - Display clock and start timer
 - Increase [questionCount]
 
@@ -77,7 +73,7 @@ clockRunning        = Time runing
 - Check if time smaller than `1`
     + TRUE - Inform "Run out of time", increase [loss]
 - Get the text of the button pressed
-- Compare text to `answerArray[questionIndex][0]`
+- Compare text to `answerArray[questionCount][0]`
     + TRUE - Inform "Correct Answer", increase [win]
     + FASLE - Inform "Wrong Answer", increase [loss]
 - Select new question
