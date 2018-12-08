@@ -11,18 +11,18 @@ questionArray = [];
 responseMsg = "";
 
 //      NUMBER/INTEGER
-questionSet = 20;
+questionSet = 5;
 wins = 0;
 loss = 0;
 questionCount = 0;
 time = 50;
-accuracy = 0;
 
 
 //      BOOLEAN
-gameMode = false;
-clockRunning = false;
-isQuestion = false;
+gameMode = false;           // During game
+clockRunning = false;       // If running the timer
+isQuestion = false;         // If the timer is used to time a question
+clicked = false;            // If an answer button has been clicked
 
 // ------------------------------------------------------------
 
@@ -36,6 +36,60 @@ $(document).ready(function () {
 
     // Get the first question
     newQuestion();
+
+    // Used to find the index of the correct answer using `findIndex`
+    function findAnswer(x) {
+        return x === questionArray[questionCount].answer;
+    }
+
+    $(".answer").on("click", function () {
+
+        if (clicked) {
+            return;
+        }
+
+        // Stop the clock
+        timerStop();
+
+        console.log("Selection: " + this.innerHTML);
+
+        if (this.innerHTML === questionArray[questionCount].answer) {
+            // Correct answer !!!
+            
+            console.log("Correct answer!")
+
+            // Increase win counter
+            wins++;
+
+            // Mark correct answer in green
+            $("#" + this.id).toggleClass("btn-secondary btn-success")
+        }
+        else {
+            // Wrong answer !!!
+            
+            console.log("wrong answer!")
+
+            // Increase loss counter
+            loss++;
+
+            // Mark selection in red
+            $("#" + this.id).toggleClass("btn-secondary btn-danger")
+
+            // Find the index of the correct answer in the shuffled `answerArray`
+            var correctIndex = questionArray[questionCount].answerArray.findIndex(findAnswer);
+
+            // Mark correct answer in yellow
+            $("#ans" + (correctIndex + 1)).toggleClass("btn-secondary btn-warning")
+        }
+
+        clicked = true;
+
+        setTimeout(newQuestion, 3000);
+    });
+
+
+
+
 
 });
 
@@ -53,26 +107,55 @@ function buildQuestionArray() {
 // Select new question and display
 function newQuestion() {
 
-    // Check if we displayed as many questions as requested
-    if (questionCount > questionSet) {
+    // Allows the user to click buttons
+    clicked = false;
 
-        // Set end game mode
+    // Check if we displayed as many questions as requested
+    if (questionCount === questionSet) {
+
+        // Set end game mode and exit
         gameMode = false;
+
+        // Log
+        console.log("All " + questionCount + " questions done");
+        console.log("Correct guesses: " + wins);
+        console.log("Inorrect guesses: " + loss);
+        console.log("Accuracy: " + ((wins/questionCount)*100).toFixed(2) + "%");
 
         return;
     }
 
-
+    // Increase question counter
     questionCount++;
+
+    console.log("===================================");
+    console.log("Question #" + questionCount);
+
+    // Start the question timer
     timerRun();
+
     updateScreen();
 }
 
 function updateScreen() {
 
     if (gameMode) {
+
+
+        // INITIAL STATE //
+
+        $(".answer").removeClass("btn-success");
+        $(".answer").removeClass("btn-danger");
+        $(".answer").removeClass("btn-warning");
+        $(".answer").addClass("btn-secondary");
+
+
         // Log the quesiton array selected
         console.log(questionArray[questionCount]);
+
+        // Write the question number
+        $("#questionTitle").text("Question: " + questionCount);
+        
 
         // Write the question
         $("#question").text(questionArray[questionCount].question);
@@ -80,21 +163,22 @@ function updateScreen() {
         // Randomize answer order
         shuffleArray(questionArray[questionCount].answerArray);
 
-        // Write the 
+        // Write the answers in the buttons
         $("#ans1").text(questionArray[questionCount].answerArray[0]);
         $("#ans2").text(questionArray[questionCount].answerArray[1]);
         $("#ans3").text(questionArray[questionCount].answerArray[2]);
     }
-
-
 }
 
 function timerRun() {
+
+    // Set interval to 1 second
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
 }
 
 function timerStop() {
+    // Return clock to 00
     clearInterval(intervalId);
 }
 
@@ -108,8 +192,11 @@ function decrement() {
 
     //  When run out of time...
     if (time <= 0) {
+
+        // Stop timer
         timerStop();
-        // alert("time's up!");
+
+        // Log "out of time" and question number
         console.log("Player ran out of time on question " + (questionCount));
     }
 }
