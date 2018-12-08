@@ -11,7 +11,7 @@ questionArray = [];
 responseMsg = "";
 
 //      NUMBER/INTEGER
-questionSet = 5;
+questionSet = 10;           // Default value if user doesn't change
 wins = 0;
 loss = 0;
 questionCount = 0;
@@ -28,8 +28,6 @@ clicked = false;            // If an answer button has been clicked
 
 $(document).ready(function () {
 
-    // LETS PLAY!!
-    gameMode = true;
 
     // Create the array with all available questions
     buildQuestionArray();
@@ -42,6 +40,27 @@ $(document).ready(function () {
         return x === questionArray[questionCount].answer;
     }
 
+    // Slide the bar to set the `questionSet` vaiable 
+    $("#questionRange").on("input", function () {
+
+        // Display selection
+        $("#questionSet").html("<h1>" + this.value + " questions</h1>");
+
+        // Update `questionSet` vaiable 
+        questionSet = this.value;
+
+    });
+
+    // Start the game!
+    $("#start").on("click", function () {
+
+        // LETS PLAY!!
+        gameMode = true;
+
+        updateScreen();
+    });
+
+    // User clicks any answer button
     $(".answer").on("click", function () {
 
         if (clicked) {
@@ -90,10 +109,6 @@ $(document).ready(function () {
         setTimeout(newQuestion, 3000);
     });
 
-
-
-
-
 });
 
 // Build the array with all the questions available
@@ -122,11 +137,11 @@ function newQuestion() {
 
         // Log
         console.log("All " + questionCount + " questions done");
-        console.log("Correct guesses: " + wins);
-        console.log("Incorrect guesses: " + loss);
+        console.log("Correct answers: " + wins);
+        console.log("Incorrect answers: " + loss);
         console.log("Accuracy: " + ((wins / questionCount) * 100).toFixed(2) + "%");
 
-        $("#stats").html("<b>Correct guesses:</b> " + wins + "<br><b>Incorrect guesses:</b> " + loss + "<br><b>Accuracy:</b> " + ((wins / questionCount) * 100).toFixed(2) + "%");
+        $("#stats").html("<b>Correct answers:</b> " + wins + "<br><b>Incorrect answers:</b> " + loss + "<br><b>Accuracy:</b> " + ((wins / questionCount) * 100).toFixed(2) + "%");
 
         return;
     }
@@ -150,8 +165,9 @@ function updateScreen() {
 
     if (gameMode) {
 
-
         // INITIAL STATE //
+
+        $(".col-8").html("<div><div id=\"timer\" style=\"visibility: hidden\">50 seconds left!</div></div><br><div><h2 id=\"questionTitle\">Question</h2><div id=\"question\">Question text goes here</div></div><br><div><button type=\"button\" class=\"btn btn-secondary btn-sm mb-3 answer\" id=\"ans1\">Answer1</button><br><button type=\"button\" class=\"btn btn-secondary btn-sm mb-3 answer\" id=\"ans2\">Answer2</button><br><button type=\"button\" class=\"btn btn-secondary btn-sm mb-3 answer\" id=\"ans3\">Answer3</button></div><div id=\"stats\" ></div>");
 
         $(".answer").removeClass("btn-success");
         $(".answer").removeClass("btn-danger");
@@ -159,12 +175,12 @@ function updateScreen() {
         $(".answer").addClass("btn-secondary");
 
 
+
         // Log the quesiton array selected
         console.log(questionArray[questionCount]);
 
         // Write the question number
-        $("#questionTitle").text("Question: " + questionCount);
-
+        $("#questionTitle").text("Question " + questionCount);
 
         // Write the question
         $("#question").text(questionArray[questionCount].question);
@@ -222,6 +238,5 @@ function shuffleArray(array) {
         array[j] = temp;
     }
 }
-
 
 
