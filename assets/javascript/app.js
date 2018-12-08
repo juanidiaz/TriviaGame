@@ -55,7 +55,7 @@ $(document).ready(function () {
 
         if (this.innerHTML === questionArray[questionCount].answer) {
             // Correct answer !!!
-            
+
             console.log("Correct answer!")
 
             // Increase win counter
@@ -66,7 +66,7 @@ $(document).ready(function () {
         }
         else {
             // Wrong answer !!!
-            
+
             console.log("wrong answer!")
 
             // Increase loss counter
@@ -83,6 +83,9 @@ $(document).ready(function () {
         }
 
         clicked = true;
+
+        $("#timer").css("visibility", "hidden");
+
 
         setTimeout(newQuestion, 3000);
     });
@@ -110,6 +113,7 @@ function newQuestion() {
     // Allows the user to click buttons
     clicked = false;
 
+
     // Check if we displayed as many questions as requested
     if (questionCount === questionSet) {
 
@@ -119,11 +123,16 @@ function newQuestion() {
         // Log
         console.log("All " + questionCount + " questions done");
         console.log("Correct guesses: " + wins);
-        console.log("Inorrect guesses: " + loss);
-        console.log("Accuracy: " + ((wins/questionCount)*100).toFixed(2) + "%");
+        console.log("Incorrect guesses: " + loss);
+        console.log("Accuracy: " + ((wins / questionCount) * 100).toFixed(2) + "%");
+
+        $("#stats").html("<b>Correct guesses:</b> " + wins + "<br><b>Incorrect guesses:</b> " + loss + "<br><b>Accuracy:</b> " + ((wins / questionCount) * 100).toFixed(2) + "%");
 
         return;
     }
+
+    // Show the timer
+    $("#timer").css("visibility", "visible");
 
     // Increase question counter
     questionCount++;
@@ -155,7 +164,7 @@ function updateScreen() {
 
         // Write the question number
         $("#questionTitle").text("Question: " + questionCount);
-        
+
 
         // Write the question
         $("#question").text(questionArray[questionCount].question);
