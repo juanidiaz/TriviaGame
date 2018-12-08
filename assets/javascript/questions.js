@@ -1,10 +1,10 @@
 // Creating a "Character" object using constructor notation
-function triviaElement(question, answer1, answer2, answer3) {
+function triviaElement(question, answer, answer2, answer3) {
     this.question = question;
-    this.answerArray = [this.answer1 = answer1, this.answer2 = answer2, this.answer3 = answer3];
+    this.answerArray = [this.answer = answer, this.answer2 = answer2, this.answer3 = answer3];
 }
 
-var questionAvailable = 74;
+var questionAvailable = 29;
 
 // Creating an object for every character
 var question0 = new triviaElement("Bees create what sweet substance?", "Honey", "Wax", "Water");
@@ -28,14 +28,14 @@ var question17 = new triviaElement("What % of an egg’s weight is the shell?", 
 var question18 = new triviaElement("What colour are Smurfs?", "Blue", "Purple", "Yellow");
 var question19 = new triviaElement("What does Fred Flintstone wear around his neck?", "A tie", "A necklace", "Nothing");
 var question20 = new triviaElement("What food do Giant Pandas normally eat?", "Bamboo", "Giant cake", "Peanuts");
-var question21 = new triviaElement("What form of aerial transport does a witch favour?", "Broomstick", "", "");
-var question22 = new triviaElement("What galaxy is Earth located in?", "The Milky Way", "", "");
-var question23 = new triviaElement("What is the antonym of the word ‘synonym’?", "Of course, it is ‘antonym’ itself!", "", "");
-var question24 = new triviaElement("What is the capital of England?", "London", "", "");
-var question25 = new triviaElement("What is the capital of Hawaii?", "Honolulu", "", "");
-var question26 = new triviaElement("What is the common name for calcium carbonate?", "Chalk", "", "");
-var question27 = new triviaElement("What is the distance around a circle called?", "Circumference", "", "");
-var question28 = new triviaElement("What is the first element on the periodic table of elements?", "Hydrogen", "", "");
+var question21 = new triviaElement("What form of aerial transport does a witch favour?", "Broomstick", "Air Canada", "Submarine");
+var question22 = new triviaElement("What galaxy is Earth located in?", "The Milky Way", "Andromeda", "Centaurus A");
+var question23 = new triviaElement("What is the antonym of the word ‘synonym’?", "Of course, it is ‘antonym’ itself!", "It doesnt have!", "The number THREE");
+var question24 = new triviaElement("What is the capital of England?", "London", "Edinburgh", "Toronto");
+var question25 = new triviaElement("What is the capital of Hawaii?", "Honolulu", "Motunui", "Maui");
+var question26 = new triviaElement("What is the common name for calcium carbonate?", "Chalk", "Homogenized milk", "Coal");
+var question27 = new triviaElement("What is the distance around a circle called?", "Circumference", "Diameter", "Radius");
+var question28 = new triviaElement("What is the first element on the periodic table of elements?", "Hydrogen", "Oxygen", "Lead");
 var question29 = new triviaElement("What is the name of Harry Potter’s pet owl?", "Hedwig", "", "");
 var question30 = new triviaElement("What is the name of Peppa Pig’s brother?", "George", "", "");
 var question31 = new triviaElement("What is the name of the actor who plays the character of Harry Potter in the movie series?", "Daniel Radcliffe", "", "");

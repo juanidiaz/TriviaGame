@@ -22,10 +22,6 @@ accuracy            = (([wins]/[questionCount]) * 100).toFixed(2) + `%`
 
 
 # Strings
-questionTxt         = text of the question
-answer1             = text of first answer
-answer2             = text of second answer
-answer3             = text of third answer
 responseMsg         = respond once user selection
 
 

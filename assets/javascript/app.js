@@ -5,26 +5,24 @@
 var intervalId;
 
 //      ARRAYS
-// questionArray = [question0, question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15, question16, question17, question18, question19, question20];
 questionArray = [];
-randomArray = [0, 1, 2];
 
 //      STRINGS/CHAR
 responseMsg = "";
 
-
 //      NUMBER/INTEGER
-questionSet = 5;
+questionSet = 20;
 wins = 0;
 loss = 0;
 questionCount = 0;
-time = 10;
+time = 50;
 accuracy = 0;
 
 
 //      BOOLEAN
 gameMode = false;
 clockRunning = false;
+isQuestion = false;
 
 // ------------------------------------------------------------
 
@@ -80,13 +78,12 @@ function updateScreen() {
         $("#question").text(questionArray[questionCount].question);
 
         // Randomize answer order
-        shuffleArray(randomArray);
+        shuffleArray(questionArray[questionCount].answerArray);
 
         // Write the 
-        $("#ans1").text(questionArray[questionCount].answerArray[randomArray[randomArray[0]]]);
-        $("#ans2").text(questionArray[questionCount].answerArray[randomArray[randomArray[1]]]);
-        $("#ans3").text(questionArray[questionCount].answerArray[randomArray[randomArray[2]]]);
-
+        $("#ans1").text(questionArray[questionCount].answerArray[0]);
+        $("#ans2").text(questionArray[questionCount].answerArray[1]);
+        $("#ans3").text(questionArray[questionCount].answerArray[2]);
     }
 
 
