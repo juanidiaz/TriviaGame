@@ -1,24 +1,18 @@
 body {
     background-image: url("../images/curtains_1.png");
     
-    background-color: black;
+    background-color: #540604;
     background-repeat: no-repeat;
     background-size: cover;
     color: rgb(211, 211, 211);
     text-shadow: 2px 2px 10px #111111;
-   
-    /* background-color: rgb(36, 36, 36);
-    color: rgb(211, 211, 211); */
 }
 
-.col-2{
-    /* background-color: rgba(56, 155, 10, 0.363); */
+#timer{
+    color: #0dee20ea;
+    font-weight: bold;
+    font-size: 20px;
 }
-
-.col-8{
-    /* background-color: rgba(114, 10, 155, 0.363); */
-}
-
 .answer{
     width: 250px !important;
 }
@@ -30,40 +24,40 @@ body {
 
 .slidecontainer {
     width: 100%; /* Width of the outside container */
-  }
-  
-  /* The slider itself */
-  .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 70%; /* Full-width */
-    height: 5px;
-    background: #ffffff;
-    outline: none;
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-  }
-  
-  /* Mouse-over effects */
-  .slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
-  }
-  
-  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: rgb(255, 232, 21); /* Green background */
-    border: 1px solid black;
-    cursor: pointer; /* Cursor on hover */
-  }
-  
-  .slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
+}
+
+/* The slider itself */
+.slider {
+-webkit-appearance: none;  /* Override default CSS styles */
+appearance: none;
+width: 70%; /* Full-width */
+height: 5px;
+background: #ffffff;
+outline: none;
+opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+-webkit-transition: .2s;
+transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+-webkit-appearance: none; /* Override default look */
+appearance: none;
+width: 25px; /* Set a specific slider handle width */
+height: 25px; /* Slider handle height */
+background: rgb(255, 232, 21); /* Green background */
+border: 1px solid black;
+cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+width: 25px; /* Set a specific slider handle width */
+height: 25px; /* Slider handle height */
+background: #4CAF50; /* Green background */
+cursor: pointer; /* Cursor on hover */
+}

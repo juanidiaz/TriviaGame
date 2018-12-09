@@ -16,24 +16,22 @@ wins = 0;
 loss = 0;
 questionCount = 0;
 time = 50;
-
+timeBetweenQuestions = 2;   // Time between questions [in seconds]
 
 //      BOOLEAN
-gameMode = false;           // During game
-clockRunning = false;       // If running the timer
-isQuestion = false;         // If the timer is used to time a question
+freshSlate = false;          // Sets initial state
+gameMode = false;           // TRUE while answer running
 clicked = false;            // If an answer button has been clicked
 
 // ------------------------------------------------------------
 
 $(document).ready(function () {
 
+    // First time the app is loaded
+    freshSlate = true;
 
     // Create the array with all available questions
     buildQuestionArray();
-
-    // Get the first question
-    newQuestion();
 
     // Used to find the index of the correct answer using `findIndex`
     function findAnswer(x) {
@@ -57,6 +55,19 @@ $(document).ready(function () {
         // LETS PLAY!!
         gameMode = true;
 
+        // Get the first question
+        newQuestion();
+    });
+
+    // I liked it... lets play again!!
+    $("#again").on("click", function () {
+
+        // First time the app is loaded
+        freshSlate = true;
+
+        // LETS PLAY!!
+        gameMode = false;
+
         updateScreen();
     });
 
@@ -70,43 +81,45 @@ $(document).ready(function () {
         // Stop the clock
         timerStop();
 
-        console.log("Selection: " + this.innerHTML);
+        //console.log("Selection: " + this.innerHTML);
 
         if (this.innerHTML === questionArray[questionCount].answer) {
             // Correct answer !!!
 
-            console.log("Correct answer!")
+            //console.log("Correct answer!")
 
             // Increase win counter
             wins++;
 
             // Mark correct answer in green
-            $("#" + this.id).toggleClass("btn-secondary btn-success")
+            $("#" + this.id).toggleClass("btn-light btn-success")
         }
         else {
             // Wrong answer !!!
 
-            console.log("wrong answer!")
+            //console.log("wrong answer!")
 
             // Increase loss counter
             loss++;
 
             // Mark selection in red
-            $("#" + this.id).toggleClass("btn-secondary btn-danger")
+            $("#" + this.id).toggleClass("btn-light btn-danger")
 
             // Find the index of the correct answer in the shuffled `answerArray`
             var correctIndex = questionArray[questionCount].answerArray.findIndex(findAnswer);
 
             // Mark correct answer in yellow
-            $("#ans" + (correctIndex + 1)).toggleClass("btn-secondary btn-warning")
+            $("#ans" + (correctIndex + 1)).toggleClass("btn-light btn-warning")
         }
 
+        // No more answer can be clicked!
         clicked = true;
 
+        // Hide the timer
         $("#timer").css("visibility", "hidden");
 
-
-        setTimeout(newQuestion, 3000);
+        // Wait some time before move to the next question
+        setTimeout(newQuestion, timeBetweenQuestions * 1000);
     });
 
 });
@@ -125,25 +138,17 @@ function buildQuestionArray() {
 // Select new question and display
 function newQuestion() {
 
+    // Not the first time
+    freshSlate = false;
+
     // Allows the user to click buttons
     clicked = false;
 
-
     // Check if we displayed as many questions as requested
-    if (questionCount === questionSet) {
+    if (questionCount == questionSet) {
 
         // Set end game mode and exit
         gameMode = false;
-
-        // Log
-        console.log("All " + questionCount + " questions done");
-        console.log("Correct answers: " + wins);
-        console.log("Incorrect answers: " + loss);
-        console.log("Accuracy: " + ((wins / questionCount) * 100).toFixed(2) + "%");
-
-        $("#stats").html("<b>Correct answers:</b> " + wins + "<br><b>Incorrect answers:</b> " + loss + "<br><b>Accuracy:</b> " + ((wins / questionCount) * 100).toFixed(2) + "%");
-
-        return;
     }
 
     // Show the timer
@@ -152,32 +157,40 @@ function newQuestion() {
     // Increase question counter
     questionCount++;
 
-    console.log("===================================");
-    console.log("Question #" + questionCount);
-
     // Start the question timer
     timerRun();
 
     updateScreen();
 }
 
+// Print the game screen
 function updateScreen() {
+
+    if (freshSlate) {
+        // INITIAL STATE //
+
+        // Show the welcome screen... hide everything else
+        $("#welcome").css("display", "");
+        $("#game").css("display", "none");
+        $("#endOfGame").css("display", "none");
+
+        return;
+    }
 
     if (gameMode) {
 
-        // INITIAL STATE //
-
-        $(".col-8").html("<div><div id=\"timer\" style=\"visibility: hidden\">50 seconds left!</div></div><br><div><h2 id=\"questionTitle\">Question</h2><div id=\"question\">Question text goes here</div></div><br><div><button type=\"button\" class=\"btn btn-secondary btn-sm mb-3 answer\" id=\"ans1\">Answer1</button><br><button type=\"button\" class=\"btn btn-secondary btn-sm mb-3 answer\" id=\"ans2\">Answer2</button><br><button type=\"button\" class=\"btn btn-secondary btn-sm mb-3 answer\" id=\"ans3\">Answer3</button></div><div id=\"stats\" ></div>");
+        // Show the game screen... hide everything else
+        $("#welcome").css("display", "none");
+        $("#game").css("display", "");
+        $("#endOfGame").css("display", "none");
 
         $(".answer").removeClass("btn-success");
         $(".answer").removeClass("btn-danger");
         $(".answer").removeClass("btn-warning");
-        $(".answer").addClass("btn-secondary");
-
-
+        $(".answer").addClass("btn-light");
 
         // Log the quesiton array selected
-        console.log(questionArray[questionCount]);
+        //console.log(questionArray[questionCount]);
 
         // Write the question number
         $("#questionTitle").text("Question " + questionCount);
@@ -193,8 +206,25 @@ function updateScreen() {
         $("#ans2").text(questionArray[questionCount].answerArray[1]);
         $("#ans3").text(questionArray[questionCount].answerArray[2]);
     }
+    else {
+        // Log final stats
+        console.log("All " + questionCount + " questions done");
+        console.log("Correct answers: " + wins);
+        console.log("Incorrect answers: " + loss);
+        console.log("Accuracy: " + ((wins / questionCount) * 100).toFixed(2) + "%");
+
+        // Show the enOfGame... hide everything else
+        $("#welcome").css("display", "none");
+        $("#game").css("display", "none");
+        $("#endOfGame").css("display", "");
+
+        // Populate stats
+        $("#stats").html("<b>Correct answers:</b> " + wins + "<br><b>Incorrect answers:</b> " + loss + "<br><b>Accuracy:</b> " + ((wins / questionCount) * 100).toFixed(2) + "%");
+
+    }
 }
 
+/********** ALL TIMER RELATED FUNCTIONS **********/
 function timerRun() {
 
     // Set interval to 1 second
@@ -225,6 +255,7 @@ function decrement() {
         console.log("Player ran out of time on question " + (questionCount));
     }
 }
+/*************************************************/
 
 /*******************************************
  * Randomize array element order in-place. *

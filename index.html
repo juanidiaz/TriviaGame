@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8">
-
+                <!--  ========= WELCOME SCREEN ========= -->
                 <div id="welcome">
                     <img src="http://triviabrothers.com/wp-content/uploads/2018/05/logo_final.png" alt="Copyright http://triviabrothers.com/">
 
@@ -51,32 +51,59 @@
                     <div>
                         <button type="button" class="btn btn-warning btn-lg mb-3" id="start">LETS PLAY!!!</button><br>
                     </div>
+                </div>
 
+                <!--  ========= STRUCTURE OF THE GAME ========= -->
+                <div id="game" style="display:none;">
+                    <div>
+                        <div id="timer">50 seconds left!</div>
+                    </div>
+
+                    <br>
+
+                    <div>
+                        <h1 id="questionTitle">Question</h1>
+                        <h3 id="question">Question text goes here</h3>
+                    </div>
+
+                    <br>
+
+                    <div>
+                        <button type="button" class="btn btn-light btn-sm mb-3 answer" id="ans1">Answer1</button><br>
+                        <button type="button" class="btn btn-light btn-sm mb-3 answer" id="ans2">Answer2</button><br>
+                        <button type="button" class="btn btn-light btn-sm mb-3 answer" id="ans3">Answer3</button>
+                    </div>
 
                 </div>
 
-                <!--  ========= STRUCTURE OF THE GAME =========
-                <div>
-                    <div id="timer" style="visibility: hidden">50 seconds left!</div>
+                <!--  ========= END OF GAME SCREEN ========= -->
+                <div id="endOfGame" style="display:none;">
+                    <div>
+                        <img src="http://triviabrothers.com/wp-content/uploads/2018/05/logo_final.png" width="120px"
+                            alt="Copyright http://triviabrothers.com/">
+                    </div>
+
+                    <div style="margin-top: 50px;">
+                        <h1>Congratulations!</h1>
+                        <br>
+                        <h3>You made it through all your questions.<br>Here are you stats:</h3>
+                    </div>
+
+                    <div id="stats" style="margin-top: 30px;">
+                        <b>Correct answers:</b> " + wins + "<br>
+                        <b>Incorrect answers:</b> " + loss + "<br>
+                        <b>Accuracy:</b> " + ((wins / questionCount) * 100).toFixed(2) + "%"
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <button type="button" class="btn btn-warning btn-lg mb-3" id="again">LETS PLAY AGAIN!!!</button><br>
+                    </div>
+
                 </div>
 
-                <br>
 
-                <div>
-                    <h2 id="questionTitle">Question</h2>
-                    <div id="question">Question text goes here</div>
-                </div>
 
-                <br>
 
-                <div>
-                    <button type="button" class="btn btn-secondary btn-sm mb-3 answer" id="ans1">Answer1</button><br>
-                    <button type="button" class="btn btn-secondary btn-sm mb-3 answer" id="ans2">Answer2</button><br>
-                    <button type="button" class="btn btn-secondary btn-sm mb-3 answer" id="ans3">Answer3</button>
-                </div>
-
-                <div id="stats" ></div>
--->
             </div>
             <div class="col-2"></div>
         </div>

@@ -4,7 +4,7 @@ function triviaElement(question, answer, answer2, answer3) {
     this.answerArray = [this.answer = answer, this.answer2 = answer2, this.answer3 = answer3];
 }
 
-var questionAvailable = 60;
+var questionAvailable = 69;
 
 // Creating an object for every character
 var question0 = new triviaElement("Bees create what sweet substance?", "Honey", "Wax", "Water");
@@ -14,7 +14,7 @@ var question3 = new triviaElement("How many days are there in a fortnight?", "14
 var question4 = new triviaElement("How many days are there in June?", "30", "28", "31");
 var question5 = new triviaElement("How many sides does a triangle have?", "3", "4", "5");
 var question6 = new triviaElement("How many wives did Henry VIII have?", "6", "1", "21");
-var question7 = new triviaElement("How many years are there in a millennium?", "1000", "100", "10000");
+var question7 = new triviaElement("How many years are there in a millennium?", "1,000", "100", "10,000");
 var question8 = new triviaElement("In Jungle Book what kind of animal is Baloo?", "Bear", "Tiger", "Human");
 var question9 = new triviaElement("In the nursery rhyme, who sat on a wall before having a great fall?", "Humpty Dumpty", "Bugs Bunny", "Goofy");
 var question10 = new triviaElement("In which year did the Titanic sink?", "1912", "1810", "2005");
@@ -67,16 +67,12 @@ var question56 = new triviaElement("Which planet in our Solar System is known fo
 var question57 = new triviaElement("Which river flows through London?", "The Thames", "The Huron", "The Erie");
 var question58 = new triviaElement("Who composed the Minute Waltz?", "Frederic Chopin", "Drake", "Taylor Swift");
 var question59 = new triviaElement("Who created the children’s book character Tracy Beaker?", "Jacqueline Wilson", "Wilson Jackson", "Mickael Jackson");
-var question60 = new triviaElement("Who discovered rubber?", "Charles Macintosh", "", "");
-var question61 = new triviaElement("Who does (the animated character) Princess Fiona marry?", "Shrek", "", "");
-var question62 = new triviaElement("Who founded the first public library in the U.S.?", "Benjamin Franklin", "", "");
-var question63 = new triviaElement("Who invented the telephone?", "Alexander Graham Bell", "", "");
-var question64 = new triviaElement("Who is known as the Father of the Modern Olympics?", "Pierre de Coubertin", "", "");
-var question65 = new triviaElement("Who is the patron saint of Ireland?", "St. Patrick", "", "");
-var question66 = new triviaElement("Who painted the Mona Lisa?", "Leonardo da Vinci", "", "");
-var question67 = new triviaElement("Who was created by Gepetto the woodcarver?", "Pinocchio", "", "");
-var question68 = new triviaElement("Who was the first gymnast to be awarded a perfect score of 10 at the Olympics?", "Nadia Comaneci", "", "");
-var question69 = new triviaElement("True or false? Harry Potter’s middle name is James", "TRUE", "", "");
-var question70 = new triviaElement("True or false? Mickey Mouse’s middle name is Fauntleroy", "False (it is Donald Duck’s)", "", "");
-var question71 = new triviaElement("True or false? Scarlet is a bright red color", "TRUE", "", "");
-var question72 = new triviaElement("True or false? The horse is the fastest land animal", "FALSE", "", "");
+var question60 = new triviaElement("Who discovered rubber?", "Charles Macintosh", "Dr. Charles Rubber", "Alba Edison");
+var question61 = new triviaElement("Who does (the animated character) Princess Fiona marry?", "Shrek", "Frodo", "Sven");
+var question62 = new triviaElement("Who founded the first public library in the U.S.?", "Benjamin Franklin", "Abraham Lincoln", "Forrest Gump");
+var question63 = new triviaElement("Who invented the telephone?", "Alexander Graham Bell", "Robert Nokia", "Steve Jobs");
+var question64 = new triviaElement("Who is known as the Father of the Modern Olympics?", "Pierre de Coubertin", "Alfred Joseph Hitchcock", "Sir. Winston Churchill");
+var question65 = new triviaElement("Who is the patron saint of Ireland?", "St. Patrick", "Robin Hood", "The Elfs");
+var question66 = new triviaElement("Who painted the Mona Lisa?", "Leonardo da Vinci", "Unknown artist", "Van Gogh");
+var question67 = new triviaElement("Who was created by Gepetto the woodcarver?", "Pinocchio", "Olaf", "Mickey Mouse");
+var question68 = new triviaElement("Who was the first gymnast to be awarded a perfect score of 10 at the Olympics?", "Nadia Comaneci", "Gabriela Navrátilová", "Monica Seles");
