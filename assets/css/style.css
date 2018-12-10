@@ -4,11 +4,10 @@
   }
 
 body {
-    /* background-image: url("../images/curtains_1.png"); */
     background-image: url("../images/chalkboard.jpg");
     background-color: black;
+    background-attachment: fixed;
     background-repeat: no-repeat;
-    /* background-size: cover; */
     background-size: 100%;
     color: rgb(211, 211, 211);
     text-shadow: 2px 2px 10px #111111;
@@ -71,4 +70,39 @@ width: 25px; /* Set a specific slider handle width */
 height: 25px; /* Slider handle height */
 background: #4CAF50; /* Green background */
 cursor: pointer; /* Cursor on hover */
+}
+
+#footerNav{
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    max-width: 100%;
+}
+
+#footer{
+    background-color: rgba(255, 251, 0, 0.096);
+	text-align: center;
+	font-size: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        background-size: auto;
+    }
+    
+    #imageStart {
+        width: 220px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    #imageEnd{
+        width: 120px;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
 }

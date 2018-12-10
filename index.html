@@ -33,13 +33,13 @@
             <div class="col-8">
                 <!--  ========= WELCOME SCREEN ========= -->
                 <div id="welcome">
-                    <img src="http://triviabrothers.com/wp-content/uploads/2018/05/logo_final.png" alt="Copyright http://triviabrothers.com/">
-
+                    <img src="http://triviabrothers.com/wp-content/uploads/2018/05/logo_final.png" alt="Copyright http://triviabrothers.com/"
+                        id="imageStart">
                     <p>
                         <h2>Set your challenge:</h2>
                     </p>
                     <div class="slidecontainer">
-                        <input type="range" min="5" max="60" value="10" class="slider" id="questionRange">
+                        <input type="range" min="5" max="50" value="10" class="slider" id="questionRange">
                         <div id="questionSet">
                             <h1>10 questions</h1>
                         </div>
@@ -55,6 +55,7 @@
 
                 <!--  ========= STRUCTURE OF THE GAME ========= -->
                 <div id="game" style="display:none;">
+                    <!-- <div id="game"> -->
                     <div>
                         <div id="timer">50 seconds left!</div>
                     </div>
@@ -78,9 +79,10 @@
 
                 <!--  ========= END OF GAME SCREEN ========= -->
                 <div id="endOfGame" style="display:none;">
+                    <!-- <div id="endOfGame"> -->
                     <div>
                         <img src="http://triviabrothers.com/wp-content/uploads/2018/05/logo_final.png" width="120px"
-                            alt="Copyright http://triviabrothers.com/">
+                            alt="Copyright http://triviabrothers.com/" id="imageEnd">
                     </div>
 
                     <div style="margin-top: 50px;">
@@ -100,14 +102,21 @@
                     </div>
 
                 </div>
-
-
-
-
+                <!--  ====================================== -->
             </div>
             <div class="col-2"></div>
         </div>
     </div>
+
+
+    <div class="fixed-bottom" id="footerNav">
+        <div id="footer">
+            <p>Copyright © 2008 <strong>JDI</strong>. All Rights Reserved.<br>
+                For more info check <a href="http://www.idiaz.ca" style="color:rgb(211, 211, 211);" target="_none">www.idiaz.ca</a>
+                or reach <a href="mailto:jdi@idiaz.ca" style="color:rgb(211, 211, 211);">jdi@idiaz.ca.</a></p>
+        </div>
+    </div>
+
 
 
     <!-- Load the question object -->
