@@ -8,7 +8,7 @@ var intervalId;
 questionArray = [];
 
 //      STRINGS/CHAR
-responseMsg = "";
+
 
 //      NUMBER/INTEGER
 questionSet = 10;           // Default value if user doesn't change
@@ -61,6 +61,11 @@ $(document).ready(function () {
 
     // I liked it... lets play again!!
     $("#again").on("click", function () {
+
+        // Reset variables to initial state
+        wins = 0;
+        loss = 0;
+        questionCount = 0;
 
         // First time the app is loaded
         freshSlate = true;
@@ -214,7 +219,7 @@ function updateScreen() {
         console.log("All " + questionCount + " questions done");
         console.log("Correct answers: " + wins);
         console.log("Incorrect answers: " + loss);
-        console.log("Accuracy: " + ((wins / questionCount) * 100).toFixed(2) + "%");
+        console.log("Accuracy: " + ((wins / (questionCount-1)) * 100).toFixed(2) + "%");
 
         // Show the enOfGame... hide everything else
         $("#welcome").css("display", "none");
@@ -222,7 +227,7 @@ function updateScreen() {
         $("#endOfGame").css("display", "");
 
         // Populate stats
-        $("#stats").html("<b>Correct answers:</b> " + wins + "<br><b>Incorrect answers:</b> " + loss + "<br><b>Accuracy:</b> " + ((wins / questionCount) * 100).toFixed(2) + "%");
+        $("#stats").html("<b>Correct answers:</b> " + wins + "<br><b>Incorrect answers:</b> " + loss + "<br><b>Accuracy:</b> " + ((wins / (questionCount-1)) * 100).toFixed(2) + "%");
 
     }
 }
