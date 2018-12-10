@@ -15,7 +15,7 @@ questionSet = 10;           // Default value if user doesn't change
 wins = 0;
 loss = 0;
 questionCount = 0;
-time = 50;
+timeForQuestion = 50;
 timeBetweenQuestions = 2;   // Time between questions [in seconds]
 
 //      BOOLEAN
@@ -74,7 +74,10 @@ $(document).ready(function () {
     // User clicks any answer button
     $(".answer").on("click", function () {
 
+        // No backsies!!!
         if (clicked) {
+            
+            // If a question has been selected exit
             return;
         }
 
@@ -226,6 +229,9 @@ function updateScreen() {
 
 /********** ALL TIMER RELATED FUNCTIONS **********/
 function timerRun() {
+
+    // Set time of question
+    time = timeForQuestion;
 
     // Set interval to 1 second
     clearInterval(intervalId);

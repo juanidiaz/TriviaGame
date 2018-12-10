@@ -1,11 +1,22 @@
+@font-face {
+    font-family: DK_Crayon;
+    src: url(../fonts/DK_Crayon_Crumble.ttf);
+  }
+
 body {
-    background-image: url("../images/curtains_1.png");
-    
-    background-color: #540604;
+    /* background-image: url("../images/curtains_1.png"); */
+    background-image: url("../images/chalkboard.jpg");
+    background-color: black;
     background-repeat: no-repeat;
-    background-size: cover;
+    /* background-size: cover; */
+    background-size: 100%;
     color: rgb(211, 211, 211);
     text-shadow: 2px 2px 10px #111111;
+}
+
+#questionBoard{
+    font-family: "DK_Crayon", "Segoe UI","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    color: rgb(238, 241, 23);
 }
 
 #timer{
