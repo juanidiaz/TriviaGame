@@ -19,9 +19,10 @@ timeForQuestion = 50;
 timeBetweenQuestions = 2;   // Time between questions [in seconds]
 
 //      BOOLEAN
-freshSlate = false;          // Sets initial state
+freshSlate = false;         // Sets initial state
 gameMode = false;           // TRUE while answer running
 clicked = false;            // If an answer button has been clicked
+tooSlow = false;            // If running out of time when answering!
 
 // ------------------------------------------------------------
 
@@ -67,6 +68,10 @@ $(document).ready(function () {
         loss = 0;
         questionCount = 0;
 
+        // Shuffles question array
+        shuffleArray(questionArray);
+
+
         // First time the app is loaded
         freshSlate = true;
 
@@ -81,7 +86,7 @@ $(document).ready(function () {
 
         // No backsies!!!
         if (clicked) {
-            
+
             // If a question has been selected exit
             return;
         }
@@ -219,7 +224,7 @@ function updateScreen() {
         console.log("All " + questionCount + " questions done");
         console.log("Correct answers: " + wins);
         console.log("Incorrect answers: " + loss);
-        console.log("Accuracy: " + ((wins / (questionCount-1)) * 100).toFixed(2) + "%");
+        console.log("Accuracy: " + ((wins / (questionCount - 1)) * 100).toFixed(2) + "%");
 
         // Show the enOfGame... hide everything else
         $("#welcome").css("display", "none");
@@ -227,7 +232,7 @@ function updateScreen() {
         $("#endOfGame").css("display", "");
 
         // Populate stats
-        $("#stats").html("<b>Correct answers:</b> " + wins + "<br><b>Incorrect answers:</b> " + loss + "<br><b>Accuracy:</b> " + ((wins / (questionCount-1)) * 100).toFixed(2) + "%");
+        $("#stats").html("<b>Correct answers:</b> " + wins + "<br><b>Incorrect answers:</b> " + loss + "<br><b>Accuracy:</b> " + ((wins / (questionCount - 1)) * 100).toFixed(2) + "%");
 
     }
 }
@@ -259,8 +264,23 @@ function decrement() {
     //  When run out of time...
     if (time <= 0) {
 
+        //  Update the time 
+        $("#timer").text("Time up!");
+
+        // Increase loss counter
+        loss++;
+
+        // Took too long!!!
+        tooSlow = true;
+
+        // Cant click now
+        clicked = true;
+
         // Stop timer
         timerStop();
+
+        // Wait some time before move to the next question
+        setTimeout(newQuestion, timeBetweenQuestions * 1000);
 
         // Log "out of time" and question number
         console.log("Player ran out of time on question " + (questionCount));
