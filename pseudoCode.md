@@ -4,55 +4,58 @@
 
 # Objects
 triviaElement       = Contain the question and the answerArray for that question
+questionN           = questionN, one for each element on questionArray
 intervalId          = Holds setInterval that runs the stopwatch
 
 
 # Arrays
-questionArray       = All questions
+questionArray       = Array with all quesitons
 answerArray         = All answers, each item has three values, item 0 is the correct one
 
 
 # Integers
+questionAvailable   = Size of `questionArray`
 questionSet         = number of questions to pick
 wins                = Correct answers
 loss                = Incorrect answers
+time                = question counter
+timeForQuestion     = time set for question
+timeBetweenQuestions= period between questions
 questionCount       = question counter
-time                = stopwatch time
-accuracy            = (([wins]/[questionCount]) * 100).toFixed(2) + `%`
 
 
 # Strings
-responseMsg         = respond once user selection
 
 
 # Boolean
-gameMode            = If playing game TRUE
-clockRunning        = Time runing
+freshSlate          = Sets initial state
+gameMode            = TRUE while answer running
+clicked             = If an answer button has been clicked
+tooSlow             = If running out of time when answering!
+
 
 #------------------------------------------------#
 # Initial state
 - Page prints title
-- Page prints instructions
-- User sets the amount of questions from radio boxes
-    + Options 10, 15 and 30
-    + Set [questionSet] to the user input from initial mode.
-- Page stays in this state until user clicks START
-- No stats are shown here
+- User sets the amount of questions using the slider
+    + Options from 5 to 50. Set's [questionSet]
+    + Default value is 10
+- Page stays in this state until user clicks `LETS PLAY!!!`
+- No stats are shown here.
 
 # Game starts
-- After START the screen clears and the stats are visible
-    + Correct questions - [wins]
-    + Incorrect questions - [lost]
-- A GET READY timer [intervalId] of 5 seconds is presented... Upon GO! the first question is presented
-- After 3 seconds (to read question) the answers show up
+- After `LETS PLAY!!!` the question `questionArray` is created and shuffled.
+- The first question is presented and the answers show up
     + Question timer starts
-    + if user clicks the CORRECT answer a congratulation message shows up.
-    + if user clicks INCORRECT answer or runs out of time.
-        - Inform of wrong answer
-        - Show correct answer
-- After 3 seconds show the next question and loops continues for all questions
-- After all questions are done present stats in screen and ask to play again
-- If select to play again go to `Initial State`.
+    + if user clicks the CORRECT answer the button turns GREEN.
+        - Increase [wins]
+    + if user clicks INCORRECT answer: the button turns GREEN.
+        - The button turns RED and
+        - the button with the correct answer turns YELLOW.
+        - Increase [loss]
+    + if timer runs to 00 before a click will behave as INCORRECT selection.
+- After `timeBetweenQuestions` seconds show the next question and loops continues for all `questionSet` questions
+- After all questions are done ap goes to "Final Screen" mode.
 
 # Select new questions
 - Check if `questionCount` is greater than `questionSet`

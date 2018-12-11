@@ -2,10 +2,10 @@
 
 //      OBJECTS
 
-var intervalId;
+var intervalId;             // Holds setInterval that runs the stopwatch
 
 //      ARRAYS
-questionArray = [];
+questionArray = [];         // Array with all quesitons
 
 //      STRINGS/CHAR
 
@@ -15,6 +15,7 @@ questionSet = 10;           // Default value if user doesn't change
 wins = 0;
 loss = 0;
 questionCount = 0;
+time = 0;
 timeForQuestion = 50;
 timeBetweenQuestions = 2;   // Time between questions [in seconds]
 
