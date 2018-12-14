@@ -9,7 +9,7 @@ Trivia game using JavaScript for the logic and jQuery to manipulate HTML. The ga
 
 ## INSTRUCTIONS
 1. Upon load, set the amount of questions to receive on a GAME.
-2. Click LETS PLAY!
+2. Click **LETS PLAY!**
 3. The questions will be displayed one at a time with three posible options. Only one answer will be correct.
    - Read the question and select the answer by clicking on it's button.
    - If you chose the correct answer the button will turn GREEN.
@@ -19,8 +19,10 @@ Trivia game using JavaScript for the logic and jQuery to manipulate HTML. The ga
     + Correct answers
     + Incorrect answers
     + Accuracy (percentage)
-5. Want to play again... go ahead!
+5. Want to play again... go ahead... click **LETS PLAY AGAIN!!!**
 
+
+## SCREENSHOTS
 ![Welcome](./assets/images/welcome.png)
 ![Question](./assets/images/question.png)
 ![Question_right](./assets/images/question_right.png)
